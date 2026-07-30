@@ -1,0 +1,37 @@
+{
+  "name": "js-back-end-exam-preparation-world-cup-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoychodebrenliev/JS-Back-End-Exam-Preparation-World-Cup-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/stoychodebrenliev/JS-Back-End-Exam-Preparation-World-Cup-Tracker/issues"
+  },
+  "homepage": "https://github.com/stoychodebrenliev/JS-Back-End-Exam-Preparation-World-Cup-Tracker#readme",
+  "devDependencies": {
+    "prisma": "^7.9.0"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^7.9.0",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-handlebars": "^9.0.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.22.0",
+    "zod": "^4.4.3"
+  }
+}

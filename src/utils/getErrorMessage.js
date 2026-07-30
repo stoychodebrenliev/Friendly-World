@@ -1,3 +1,7 @@
 export default function getErrorMessage(error) {
-    return error.issues?.[0]?.message || error.message;
+    if (error?.issues?.length > 0) {
+        return error.issues[0].message;
+    }
+
+    return error.message || 'Something went wrong';
 }

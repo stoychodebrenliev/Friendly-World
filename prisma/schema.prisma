@@ -13,3 +13,27 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+
+  createdAnimals Animal[] @relation("AnimalOwner")
+  donatedAnimals Animal[] @relation("AnimalDonations")
+}
+
+model Animal {
+  id          Int    @id @default(autoincrement())
+  name        String
+  years       Int
+  kind        String
+  image       String
+  need        String
+  location    String
+  description String
+
+  ownerId Int
+  owner   User   @relation("AnimalOwner", fields: [ownerId], references: [id])
+  donors  User[] @relation("AnimalDonations")
+}

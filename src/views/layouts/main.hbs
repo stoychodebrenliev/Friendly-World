@@ -18,7 +18,6 @@
 
     <div id="wrapper">
         <header>
-            <!-- Navigation -->
             <nav>
                 <div>
                     <a href="/">Home</a>
@@ -26,17 +25,18 @@
                     <a href="#">Search</a>
                 </div>
 
-                <!-- Logged-in users -->
+                {{#if user}}
                 <div class="user">
                     <a href="#">Add Animal</a>
                     <a href="/logout">Logout</a>
                 </div>
 
-                <!-- Guest users -->
+                {{else}}
                 <div class="guest">
                     <a href="login">Login</a>
                     <a href="/register">Register</a>
                 </div>
+                {{/if}}
             </nav>
         </header>
 <main>

@@ -2,7 +2,7 @@ import { Router } from "express";
 import authService from "../services/authService.js";
 import { signToken } from "../utils/jwt.js";
 import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
-import { registerSchema } from "../validations/authValidator.js";
+import { loginSchema, registerSchema } from "../validations/authValidator.js";
 import getErrorMessage from "../utils/getErrorMessage.js";
 
 const authController = Router();
@@ -30,6 +30,37 @@ authController.post('/register', isGuest, async (req, res) => {
             email: req.body.email
         })
     }
+});
+
+authController.get('/login', isGuest, (req, res) => {
+    res.render('login')
+});
+
+authController.post('/login', isGuest, async (req, res) => {
+
+    try {
+        const userData = await loginSchema.parseAsync(req.body);
+
+        const user = await authService.login(userData);
+
+        const token = signToken(user);
+        
+        res.cookie('auth', token, {httpOnly: true});
+
+        res.redirect('/')
+    } catch (error) {
+
+        res.render('login', {
+            error: getErrorMessage(error),
+            email: req.body.email
+        })
+    }
+});
+
+authController.get('/logout', isAuth, (req, res) => {
+    res.clearCookie('auth');
+
+    res.redirect('/')
 })
 
 export default authController;

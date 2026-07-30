@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 
 import userRepository from '../repositories/userRepository.js';
+import { email } from 'zod';
 
 export async function register(userData) {
 
@@ -18,10 +19,30 @@ export async function register(userData) {
         email,
         password: hashedPassword
     });
+};
+
+export async function login(userData) { 
+    const {email, password} = userData;
+    
+    const user = await userRepository.findByEmail(email);
+
+    if(!user) {
+        throw new Error('User not found.');
+
+    }
+
+    const isPasswordValid = await bcrypt.compare(userData.password, user.password);
+
+    if(!isPasswordValid) {
+        throw new Error ('Invalid Password.')
+    }
+    
+    return user;
 }
 
 const authService = {
-    register
+    register,
+    login
 }
 
 export default authService;

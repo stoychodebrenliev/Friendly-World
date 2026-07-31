@@ -4,8 +4,16 @@ function getAll() {
     return animalRepository.getAll();
 }
 
+function create(animalData, ownerId) {
+    return animalRepository.create({
+        ...animalData,
+        ownerId
+    })
+}
+
 const animalService = {
-    getAll
+    getAll,
+    create
 };
 
 export default animalService;

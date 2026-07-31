@@ -1,0 +1,22 @@
+
+        <main class="create">
+            <!-- Create Page (Only for logged-in users) -->
+            <section id="create">
+                <div class="form">
+                    <h2>Add item</h2>
+                    <form class="create-form" method="POST" action="/animals/create">
+                        <input type="text" name="name" id="name" value="{{animal.name}}" placeholder="Name" />
+                        <input type="text" name="years" id="years" value="{{animal.years}}" placeholder="Years" />
+                        <input type="text" name="kind" id="kind" value="{{animal.kind}}" placeholder="Kind" />
+                        <input type="text" name="image" id="animal-img" value="{{animal.image}}" placeholder="Image url" />
+                        <input type="text" name="need" id="needs-of" value="{{animal.need}}" placeholder="Needs of" />
+                        <input type="text" name="location" id="location" value="{{animal.location}}" placeholder="Location" />
+                        <textarea id="description" placeholder="Description..." name="description">{{animal.description}}</textarea>
+
+                        <button type="submit">Post</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+    
